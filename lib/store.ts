@@ -21,7 +21,7 @@ export function createTask(title: string): Task {
 export function updateTask(id: number, title?: string, done?: boolean): Task | null {
     const task = tasks.find(t => t.id === id);
     if (!task) return null;
-    if (title != undefined) task.title = title;
+    if (title !== undefined) task.title = title;
     if (done !== undefined) task.done = done;
     return task;
 }

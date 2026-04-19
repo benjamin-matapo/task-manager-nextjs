@@ -17,7 +17,7 @@ export default function Home() {
     setTasks(await res.json());
   };
 
-  useEffect(() => {fetchTasks(); }, []);
+  useEffect(() => { fetchTasks(); }, []);
 
   const addTask = async () => {
     if (!newTitle.trim()) return;
@@ -48,15 +48,15 @@ export default function Home() {
     <main className="max-w-lg mx-auto mt-16 px-4">
       <h1 className="text-2xl font-semibold mb-6 text-gray-900">Task Manager</h1>
 
-      {/* Add Task */}
+      {/* Add task */}
       <div className="flex gap-2 mb-8">
         <input
-          type="text" 
+          type="text"
           value={newTitle}
           onChange={e => setNewTitle(e.target.value)}
           onKeyDown={e => e.key === "Enter" && addTask()}
           placeholder="New task..."
-          className="flex-1 border border-gray-20 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           onClick={addTask}
@@ -69,17 +69,17 @@ export default function Home() {
       {/* Task list */}
       <ul className="space-y-2">
         {tasks.length === 0 && (
-          <p className="text-gray-400 text-sm text-center py-8">No tasks yet</p>
+          <p className="text-gray-400 text-sm text-center py-8">No tasks yet.</p>
         )}
         {tasks.map(task => (
           <li key={task.id}
-            className="flex items-center gap-3 p-3 border border-gray-100 rounded-leg hover:border-gray-200 transition-colors"
+            className="flex items-center gap-3 p-3 border border-gray-100 rounded-lg hover:border-gray-200 transition-colors"
           >
             <input
-            type="checkbox"
-            checked={task.done}
-            onChange={() => toggleDone(task)}
-            className="w-4 h-4 accent-blue-600 cursor-pointer"
+              type="checkbox"
+              checked={task.done}
+              onChange={() => toggleDone(task)}
+              className="w-4 h-4 accent-blue-600 cursor-pointer"
             />
             <span className={`flex-1 text-sm ${task.done ? "line-through text-gray-400" : "text-gray-800"}`}>
               {task.title}
@@ -88,11 +88,11 @@ export default function Home() {
               onClick={() => deleteTask(task.id)}
               className="text-gray-300 hover:text-red-500 text-xs transition-colors px-1"
             >
-              x
+              ✕
             </button>
           </li>
         ))}
       </ul>
     </main>
-  )
+  );
 }

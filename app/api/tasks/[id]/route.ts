@@ -9,7 +9,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     return NextResponse.json(task);
 }
 
-export async function DELETE(_: Request, { params }: {params: { id: string } }) {
+export async function DELETE(_: Request, { params }: { params: { id: string } }) {
     const id = parseInt(params.id);
     const success = deleteTask(id);
     if (!success) return NextResponse.json({ error: "Not found" }, { status: 404 });
